@@ -1,12 +1,4 @@
-/**
- * Liste de mots pour l'entraînement à la fluence en lecture (CP / CE1).
- *
- * Composée de deux familles de mots que l'on retrouve dans les listes de
- * référence utilisées à l'école (mots-outils très fréquents + vocabulaire
- * courant simple à décoder). Cette liste peut être librement complétée ou
- * remplacée par une liste officielle (ex. liste Eduscol, liste Dubois-Buyse)
- * en éditant ce seul fichier.
- */
+import type { WordList } from "./types";
 
 // Mots-outils / mots grammaticaux à très haute fréquence
 const motsOutils = [
@@ -77,15 +69,10 @@ const adjectifs = [
   "haut", "bas", "large", "doux", "dur", "clair", "sombre", "calme", "drôle",
 ];
 
-export const WORDS: string[] = Array.from(
-  new Set([...motsOutils, ...verbes, ...noms, ...adjectifs])
-);
-
-export function shuffleWords(words: string[]): string[] {
-  const shuffled = [...words];
-  for (let i = shuffled.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
+export const elementaire: WordList = {
+  id: "elementaire",
+  label: "Élémentaire",
+  description: "Mots-outils, verbes, noms et adjectifs fréquents (CP / CE1)",
+  icon: "📚",
+  words: Array.from(new Set([...motsOutils, ...verbes, ...noms, ...adjectifs])),
+};

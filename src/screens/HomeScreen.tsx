@@ -1,5 +1,7 @@
+import { WORD_LISTS } from "../data/wordLists";
+
 type HomeScreenProps = {
-  onStart: () => void;
+  onStart: (levelId: string) => void;
 };
 
 export default function HomeScreen({ onStart }: HomeScreenProps) {
@@ -16,12 +18,24 @@ export default function HomeScreen({ onStart }: HomeScreenProps) {
         Un adulte appuie sur le bouton <strong>✓</strong> après chaque mot
         bien lu.
       </p>
-      <p className="instructions instructions-secondary">
-        Essaie de lire le plus de mots possible pour gagner des étoiles ! ⭐
-      </p>
-      <button type="button" className="btn btn-primary btn-start" onClick={onStart}>
-        Commencer
-      </button>
+
+      <p className="level-prompt">Choisis ton niveau :</p>
+      <div className="level-buttons">
+        {WORD_LISTS.map((list) => (
+          <button
+            key={list.id}
+            type="button"
+            className="btn btn-level"
+            onClick={() => onStart(list.id)}
+          >
+            <span className="level-icon" aria-hidden="true">
+              {list.icon}
+            </span>
+            <span className="level-name">{list.label}</span>
+            <span className="level-desc">{list.description}</span>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

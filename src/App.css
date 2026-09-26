@@ -72,10 +72,53 @@
   font-size: 1.15rem;
 }
 
-.btn-start {
-  margin-top: 2rem;
-  font-size: 1.6rem;
-  padding: 1.1rem 3rem;
+.level-prompt {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.level-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.btn-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: 12rem;
+  padding: 1.5rem 1.25rem;
+  border-radius: 1.5rem;
+  background: white;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn-level:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.level-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.level-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.level-desc {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
 }
 
 /* ---------- Écran d'exercice ---------- */
@@ -102,8 +145,9 @@
 }
 
 .word-display {
+  font-family: "Atkinson Hyperlegible", "Baloo 2", sans-serif;
   font-size: clamp(3.5rem, 14vw, 8rem);
-  font-weight: 800;
+  font-weight: 400;
   color: var(--color-text);
   word-break: break-word;
   padding: 0 1rem;

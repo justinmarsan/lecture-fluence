@@ -10,8 +10,10 @@ function App() {
   const [screen, setScreen] = useState<Screen>("home");
   const [correctCount, setCorrectCount] = useState(0);
   const [runId, setRunId] = useState(0);
+  const [levelId, setLevelId] = useState<string | null>(null);
 
-  const handleStart = () => {
+  const handleStart = (selectedLevelId: string) => {
+    setLevelId(selectedLevelId);
     setRunId((id) => id + 1);
     setScreen("exercise");
   };
@@ -21,13 +23,17 @@ function App() {
     setScreen("results");
   };
 
-  const handleRetry = () => handleStart();
+  const handleRetry = () => {
+    if (levelId) handleStart(levelId);
+  };
   const handleHome = () => setScreen("home");
 
   return (
     <div className="app">
       {screen === "home" && <HomeScreen onStart={handleStart} />}
-      {screen === "exercise" && <ExerciseScreen key={runId} onFinish={handleFinish} />}
+      {screen === "exercise" && levelId && (
+        <ExerciseScreen key={runId} levelId={levelId} onFinish={handleFinish} />
+      )}
       {screen === "results" && (
         <ResultsScreen correctCount={correctCount} onRetry={handleRetry} onHome={handleHome} />
       )}

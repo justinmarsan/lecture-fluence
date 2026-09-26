@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import { WORDS, shuffleWords } from "../data/words";
+import { getWordList, shuffleWords } from "../data/wordLists";
 
 const DURATION_MS = 60_000;
 const TICK_MS = 100;
 
 type ExerciseScreenProps = {
+  levelId: string;
   onFinish: (correctCount: number) => void;
 };
 
-function createWordQueue(previousLastWord?: string): string[] {
-  let queue = shuffleWords(WORDS);
+function createWordQueue(words: string[], previousLastWord?: string): string[] {
+  const queue = shuffleWords(words);
   // Évite de répéter le même mot juste avant/après une reprise de liste.
   if (previousLastWord && queue[0] === previousLastWord && queue.length > 1) {
     [queue[0], queue[1]] = [queue[1], queue[0]];
@@ -17,8 +18,10 @@ function createWordQueue(previousLastWord?: string): string[] {
   return queue;
 }
 
-export default function ExerciseScreen({ onFinish }: ExerciseScreenProps) {
-  const queueRef = useRef<string[]>(createWordQueue());
+export default function ExerciseScreen({ levelId, onFinish }: ExerciseScreenProps) {
+  const words = getWordList(levelId).words;
+
+  const queueRef = useRef<string[]>(createWordQueue(words));
   const queueIndexRef = useRef(0);
   const [currentWord, setCurrentWord] = useState(queueRef.current[0]);
   const [correctCount, setCorrectCount] = useState(0);
@@ -60,7 +63,7 @@ export default function ExerciseScreen({ onFinish }: ExerciseScreenProps) {
     queueIndexRef.current += 1;
     if (queueIndexRef.current >= queueRef.current.length) {
       const lastWord = queueRef.current[queueRef.current.length - 1];
-      queueRef.current = createWordQueue(lastWord);
+      queueRef.current = createWordQueue(words, lastWord);
       queueIndexRef.current = 0;
     }
     setCurrentWord(queueRef.current[queueIndexRef.current]);

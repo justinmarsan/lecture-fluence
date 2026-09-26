@@ -1,0 +1,192 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+/* ---------- Boutons communs ---------- */
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.9rem 2.2rem;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.15);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: var(--color-text);
+}
+
+/* ---------- Écran d'accueil ---------- */
+
+.home-screen .mascot {
+  font-size: 5rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.home-screen h1 {
+  font-size: 2.6rem;
+  margin: 0 0 1rem;
+  color: var(--color-primary);
+}
+
+.instructions {
+  font-size: 1.3rem;
+  max-width: 32rem;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
+
+.instructions-secondary {
+  color: #555;
+  font-size: 1.15rem;
+}
+
+.btn-start {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  padding: 1.1rem 3rem;
+}
+
+/* ---------- Écran d'exercice ---------- */
+
+.exercise-screen {
+  padding-top: 0;
+  justify-content: center;
+}
+
+.progress-bar-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: var(--color-secondary);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-accent);
+  width: 0%;
+}
+
+.word-display {
+  font-size: clamp(3.5rem, 14vw, 8rem);
+  font-weight: 800;
+  color: var(--color-text);
+  word-break: break-word;
+  padding: 0 1rem;
+}
+
+.btn-validate {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: var(--color-success);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 800;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-validate:active {
+  transform: translateY(4px) scale(0.97);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Écran de résultats ---------- */
+
+.results-screen h1 {
+  font-size: clamp(1.8rem, 8vw, 2.4rem);
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.results-count {
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.stars-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: clamp(0.05rem, 1vw, 0.3rem);
+  width: 100%;
+  max-width: 26rem;
+  margin-bottom: 1.5rem;
+}
+
+.star {
+  font-size: clamp(1.3rem, 7.5vw, 2.6rem);
+  line-height: 1;
+}
+
+.star-filled {
+  color: var(--color-accent);
+}
+
+.star-empty {
+  color: #d8d8d8;
+}
+
+.results-message {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.results-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 480px) {
+  .btn-validate {
+    width: 5rem;
+    height: 5rem;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    font-size: 2rem;
+  }
+}

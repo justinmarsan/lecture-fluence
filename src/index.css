@@ -1,0 +1,48 @@
+:root {
+  color-scheme: light;
+  --color-bg: #fef6e4;
+  --color-primary: #5b6ee1;
+  --color-primary-dark: #4553c4;
+  --color-secondary: #f2f2f2;
+  --color-text: #2b2d42;
+  --color-accent: #ffb703;
+  --color-success: #2fbf71;
+  font-family: "Baloo 2", "Comic Sans MS", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
